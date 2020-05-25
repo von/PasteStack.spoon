@@ -1,20 +1,20 @@
 -- PasteStack spoon
 -- Spoon names should use TitleCase
 -- https://github.com/Hammerspoon/hammerspoon/blob/master/SPOONS.md#how-do-i-create-a-spoon
-spoon = {}
+local s = {}
 
 -- Metadata
-spoon.name="PasteStack"
-spoon.version="0.1"
-spoon.author="Von Welch"
-spoon.license="Creative Commons Zero v1.0 Universal"
-spoon.homepage="https://github.com/von/PasteStack.spoon"
+s.name="PasteStack"
+s.version="0.1"
+s.author="Von Welch"
+s.license="Creative Commons Zero v1.0 Universal"
+s.homepage="https://github.com/von/PasteStack.spoon"
 
 -- Set up logger for spoon
 local log = hs.logger.new("PasteStack")
-spoon.log = log
+s.log = log
 
-spoon.stack = {}
+s.stack = {}
 
 -- debug() {{{ --
 -- Enable or disable debugging
@@ -24,7 +24,7 @@ spoon.stack = {}
 ---
 --- Returns:
 ---  * Nothing
-spoon.debug = function(enable)
+s.debug = function(enable)
   if enable then
     log.setLogLevel('debug')
     log.d("Debugging enabled")
@@ -41,7 +41,7 @@ local function script_path()
     local str = debug.getinfo(2, "S").source:sub(2)
     return str:match("(.*/)")
 end
-spoon.path = script_path()
+s.path = script_path()
 -- }}} script_path() --
 
 --- PasteStack:push() {{{ --
@@ -55,9 +55,9 @@ spoon.path = script_path()
 ---
 --- Returns:
 --- * Nothing
-spoon.push = function()
+s.push = function()
   log.d("Push()")
-  table.insert(spoon.stack, hs.pasteboard.getContents())
+  table.insert(s.stack, hs.pasteboard.getContents())
 end
 --- }}} PasteStack:push() --
 
@@ -72,12 +72,12 @@ end
 ---
 --- Returns:
 --- * Nothing
-spoon.pop = function()
-  if #spoon.stack == 0 then
+s.pop = function()
+  if #s.stack == 0 then
     log.i("Empty stack")
   else
     log.d("Pop()")
-    hs.pasteboard.setContents(table.remove(spoon.stack))
+    hs.pasteboard.setContents(table.remove(s.stack))
   end
 end
 --- }}} PasteStack:push() --
@@ -101,12 +101,12 @@ end
 --- Returns:
 ---  * PasteStack object
 
-spoon.bindHotKeys = function(table)
+s.bindHotKeys = function(table)
   for feature,mapping in pairs(table) do
     if feature == "push" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], spoon.push)
+       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], s.push)
     elseif feature == "pop" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], spoon.pop)
+       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], s.pop)
      else
        log.wf("Unrecognized key binding feature '%s'", feature)
      end
@@ -115,5 +115,5 @@ spoon.bindHotKeys = function(table)
 end
 --- }}} PasteStack:bindHotKey() --
 
-return spoon
+return s
 -- vim: foldmethod=marker:
