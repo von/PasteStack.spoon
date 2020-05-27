@@ -9,6 +9,7 @@ s.version="0.1"
 s.author="Von Welch"
 s.license="Creative Commons Zero v1.0 Universal"
 s.homepage="https://github.com/von/PasteStack.spoon"
+s.path = hs.spoons.scriptPath()
 
 -- Set up logger for spoon
 local log = hs.logger.new("PasteStack")
@@ -34,15 +35,6 @@ s.debug = function(enable)
   end
 end
 -- }}}  debug() --
-
--- script_path() {{{ --
--- Internal function used to find our location, so we know where to load files from
-local function script_path()
-    local str = debug.getinfo(2, "S").source:sub(2)
-    return str:match("(.*/)")
-end
-s.path = script_path()
--- }}} script_path() --
 
 --- PasteStack:push() {{{ --
 --- PasteStack:push()
