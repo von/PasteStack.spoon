@@ -1,26 +1,17 @@
--- PasteStack spoon
--- Spoon names should use TitleCase
-local s = {}
+--- === PasteStack ===
+
+local PasteStack = {}
 
 -- Metadata {{{ --
-s.name="PasteStack"
-s.version="0.2"
-s.author="Von Welch"
-s.license="Creative Commons Zero v1.0 Universal"
-s.homepage="https://github.com/von/PasteStack.spoon"
+PasteStack.name="PasteStack"
+PasteStack.version="0.3"
+PasteStack.author="Von Welch"
+PasteStack.license="Creative Commons Zero v1.0 Universal"
+PasteStack.homepage="httpPasteStack://github.com/von/PasteStack.spoon"
 -- }}} Metadata --
 
--- Constants {{{ --
-s.path = hs.spoons.scriptPath()
--- }}} Constants --
-
--- Set up logger {{{ --
-local log = hs.logger.new("PasteStack")
-s.log = log
--- }}} Set up logger --
-
 -- PasteStack:init() {{{ --
---- PasteStack:init(self)
+--- PasteStack:init()
 --- Method
 --- Initializes a PasteStack
 ---
@@ -29,8 +20,9 @@ s.log = log
 ---
 --- Returns:
 ---  * PasteStack object
-s.init = function(self)
+function PasteStack:init()
   self.stack = {}
+  self.log = hs.logger.new("PasteStack")
   return self
 end
 -- }}} PasteStack:init() --
@@ -45,7 +37,7 @@ end
 ---
 --- Returns:
 ---  * Nothing
-s.debug = function(self, enable)
+function PasteStack:debug(enable)
   if enable then
     self.log.setLogLevel('debug')
     self.log.d("Debugging enabled")
@@ -63,11 +55,11 @@ end
 --- Does nothing if stack is empty.
 ---
 --- Parameters:
---- * Nothin
+--- * Nothing
 ---
 --- Returns:
 --- * Nothing
-s.push = function(self)
+function PasteStack:push()
   self.log.d("Push()")
   table.insert(self.stack, hs.pasteboard.getContents())
 end
@@ -80,11 +72,11 @@ end
 --- Leaves paste buffer intact.
 ---
 --- Parameters:
---- * Nothin
+--- * Nothing
 ---
 --- Returns:
 --- * Nothing
-s.pop = function(self)
+function PasteStack:pop()
   if #self.stack == 0 then
     self.log.i("Empty stack")
   else
@@ -95,7 +87,7 @@ end
 -- }}} PasteStack:push() --
 
 -- PasteStack:bindHotKey() {{{ --
---- PasteStack:bindHotKey(self, table)
+--- PasteStack:bindHotKey(table)
 --- Method
 --- The method should accept a single parameter, which is a table.
 --- The keys of the table should be strings that describe the
@@ -104,7 +96,7 @@ end
 ---   {
 ---     push = {{"cmd", "alt"}, "p"},
 ---     pop = {{"cmd", "alt"}, "P"}
---    }
+---    }
 ---
 ---
 --- Parameters:
@@ -113,12 +105,12 @@ end
 --- Returns:
 ---  * PasteStack object
 
-s.bindHotKeys = function(self, table)
+function PasteStack:bindHotKeys(table)
   for feature,mapping in pairs(table) do
     if feature == "push" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], s.push)
+       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], function() self:push() end)
     elseif feature == "pop" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], s.pop)
+       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], function() self:pop() end)
      else
        self.log.wf("Unrecognized key binding feature '%s'", feature)
      end
@@ -127,5 +119,5 @@ s.bindHotKeys = function(self, table)
 end
 -- }}} PasteStack:bindHotKey() --
 
-return s
+return PasteStack
 -- vim: foldmethod=marker:
