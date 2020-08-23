@@ -4,10 +4,10 @@ local PasteStack = {}
 
 -- Metadata {{{ --
 PasteStack.name="PasteStack"
-PasteStack.version="0.3"
+PasteStack.version="0.4"
 PasteStack.author="Von Welch"
 PasteStack.license="Creative Commons Zero v1.0 Universal"
-PasteStack.homepage="httpPasteStack://github.com/von/PasteStack.spoon"
+PasteStack.homepage="https://github.com/von/PasteStack.spoon"
 -- }}} Metadata --
 
 -- PasteStack:init() {{{ --
@@ -118,6 +118,38 @@ function PasteStack:bindHotKeys(table)
   return self
 end
 -- }}} PasteStack:bindHotKey() --
+
+-- PasteStack:chooser() {{{ --
+--- PasteStack:chooser()
+--- Method
+--- Open a hs.chooser instance allowing to choice of stack elements.
+---
+--- Parameters:
+--- * None
+---
+--- Returns:
+--- * Nothing
+function PasteStack:chooser()
+  local function chooserCallback(choice)
+    if choice == nil then
+      return
+    end
+    hs.pasteboard.setContents(self.stack[choice.index])
+  end
+
+  local choices = {}
+  for index=1,#self.stack do
+    table.insert(choices, {
+        text = string.format("%.40s", self.stack[index]),
+        index = index
+      })
+  end
+
+  local chooser = hs.chooser.new(chooserCallback)
+  chooser:choices(choices)
+  chooser:show()
+end
+-- }}} PasteStack:chooser() --
 
 return PasteStack
 -- vim: foldmethod=marker:

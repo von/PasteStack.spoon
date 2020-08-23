@@ -15,17 +15,169 @@
     "stripped_doc" : [
 
     ],
-    "desc" : "UNKNOWN DESC",
     "Deprecated" : [
 
     ],
     "type" : "Module",
+    "desc" : "UNKNOWN DESC",
     "Constructor" : [
+
+    ],
+    "doc" : "",
+    "Method" : [
+      {
+        "doc" : "Initializes a PasteStack\n\nParameters:\n * None\n\nReturns:\n * PasteStack object",
+        "desc" : "Initializes a PasteStack",
+        "stripped_doc" : [
+          "Initializes a PasteStack",
+          ""
+        ],
+        "def" : "PasteStack:init()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:init()",
+        "type" : "Method",
+        "returns" : [
+          " * PasteStack object"
+        ],
+        "name" : "init",
+        "parameters" : [
+          " * None",
+          ""
+        ]
+      },
+      {
+        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "desc" : "Enable or disable debugging",
+        "stripped_doc" : [
+          "Enable or disable debugging",
+          ""
+        ],
+        "def" : "PasteStack:debug()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:debug()",
+        "type" : "Method",
+        "returns" : [
+          " * Nothing"
+        ],
+        "name" : "debug",
+        "parameters" : [
+          " * enable - Boolean indicating whether debugging should be on",
+          ""
+        ]
+      },
+      {
+        "doc" : "Pop last item pushed onto stack into pastebuffer.\nDoes nothing if stack is empty.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
+        "desc" : "Pop last item pushed onto stack into pastebuffer.",
+        "stripped_doc" : [
+          "Pop last item pushed onto stack into pastebuffer.",
+          "Does nothing if stack is empty.",
+          ""
+        ],
+        "def" : "PasteStack:push()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:push()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "push",
+        "parameters" : [
+          "* Nothing",
+          ""
+        ]
+      },
+      {
+        "doc" : "Push a copy of the current pastebuffer onto the stack.\nLeaves paste buffer intact.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
+        "desc" : "Push a copy of the current pastebuffer onto the stack.",
+        "stripped_doc" : [
+          "Push a copy of the current pastebuffer onto the stack.",
+          "Leaves paste buffer intact.",
+          ""
+        ],
+        "def" : "PasteStack:pop()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:pop()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "pop",
+        "parameters" : [
+          "* Nothing",
+          ""
+        ]
+      },
+      {
+        "doc" : "The method should accept a single parameter, which is a table.\nThe keys of the table should be strings that describe the\naction performed by the hotkeys, and the values of the table should be tables\ncontaining modifiers and keynames\/keycodes. E.g.\n  {\n    push = {{\"cmd\", \"alt\"}, \"p\"},\n    pop = {{\"cmd\", \"alt\"}, \"P\"}\n   }\n\n\nParameters:\n * table - Table of action to key mappings\n\nReturns:\n * PasteStack object",
+        "desc" : "The method should accept a single parameter, which is a table.",
+        "stripped_doc" : [
+          "The method should accept a single parameter, which is a table.",
+          "The keys of the table should be strings that describe the",
+          "action performed by the hotkeys, and the values of the table should be tables",
+          "containing modifiers and keynames\/keycodes. E.g.",
+          "  {",
+          "    push = {{\"cmd\", \"alt\"}, \"p\"},",
+          "    pop = {{\"cmd\", \"alt\"}, \"P\"}",
+          "   }",
+          "",
+          ""
+        ],
+        "def" : "PasteStack:bindHotKey(table)",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:bindHotKey(table)",
+        "type" : "Method",
+        "returns" : [
+          " * PasteStack object"
+        ],
+        "name" : "bindHotKey",
+        "parameters" : [
+          " * table - Table of action to key mappings",
+          ""
+        ]
+      },
+      {
+        "doc" : "Open a hs.chooser instance allowing to choice of stack elements.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "desc" : "Open a hs.chooser instance allowing to choice of stack elements.",
+        "stripped_doc" : [
+          "Open a hs.chooser instance allowing to choice of stack elements.",
+          ""
+        ],
+        "def" : "PasteStack:chooser()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:chooser()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "chooser",
+        "parameters" : [
+          "* None",
+          ""
+        ]
+      }
+    ],
+    "Field" : [
+
+    ],
+    "Command" : [
 
     ],
     "items" : [
       {
-        "name" : "bindHotKey",
+        "doc" : "The method should accept a single parameter, which is a table.\nThe keys of the table should be strings that describe the\naction performed by the hotkeys, and the values of the table should be tables\ncontaining modifiers and keynames\/keycodes. E.g.\n  {\n    push = {{\"cmd\", \"alt\"}, \"p\"},\n    pop = {{\"cmd\", \"alt\"}, \"P\"}\n   }\n\n\nParameters:\n * table - Table of action to key mappings\n\nReturns:\n * PasteStack object",
+        "desc" : "The method should accept a single parameter, which is a table.",
         "stripped_doc" : [
           "The method should accept a single parameter, which is a table.",
           "The keys of the table should be strings that describe the",
@@ -38,11 +190,7 @@
           "",
           ""
         ],
-        "parameters" : [
-          " * table - Table of action to key mappings",
-          ""
-        ],
-        "doc" : "The method should accept a single parameter, which is a table.\nThe keys of the table should be strings that describe the\naction performed by the hotkeys, and the values of the table should be tables\ncontaining modifiers and keynames\/keycodes. E.g.\n  {\n    push = {{\"cmd\", \"alt\"}, \"p\"},\n    pop = {{\"cmd\", \"alt\"}, \"P\"}\n   }\n\n\nParameters:\n * table - Table of action to key mappings\n\nReturns:\n * PasteStack object",
+        "def" : "PasteStack:bindHotKey(table)",
         "notes" : [
 
         ],
@@ -51,228 +199,124 @@
         "returns" : [
           " * PasteStack object"
         ],
-        "desc" : "The method should accept a single parameter, which is a table.",
-        "def" : "PasteStack:bindHotKey(table)"
-      },
-      {
-        "name" : "debug",
-        "stripped_doc" : [
-          "Enable or disable debugging",
-          ""
-        ],
-        "parameters" : [
-          " * enable - Boolean indicating whether debugging should be on",
-          ""
-        ],
-        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:debug()",
-        "type" : "Method",
-        "returns" : [
-          " * Nothing"
-        ],
-        "desc" : "Enable or disable debugging",
-        "def" : "PasteStack:debug()"
-      },
-      {
-        "name" : "init",
-        "stripped_doc" : [
-          "Initializes a PasteStack",
-          ""
-        ],
-        "parameters" : [
-          " * None",
-          ""
-        ],
-        "doc" : "Initializes a PasteStack\n\nParameters:\n * None\n\nReturns:\n * PasteStack object",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:init()",
-        "type" : "Method",
-        "returns" : [
-          " * PasteStack object"
-        ],
-        "desc" : "Initializes a PasteStack",
-        "def" : "PasteStack:init()"
-      },
-      {
-        "name" : "pop",
-        "stripped_doc" : [
-          "Push a copy of the current pastebuffer onto the stack.",
-          "Leaves paste buffer intact.",
-          ""
-        ],
-        "parameters" : [
-          "* Nothing",
-          ""
-        ],
-        "doc" : "Push a copy of the current pastebuffer onto the stack.\nLeaves paste buffer intact.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:pop()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "desc" : "Push a copy of the current pastebuffer onto the stack.",
-        "def" : "PasteStack:pop()"
-      },
-      {
-        "name" : "push",
-        "stripped_doc" : [
-          "Pop last item pushed onto stack into pastebuffer.",
-          "Does nothing if stack is empty.",
-          ""
-        ],
-        "parameters" : [
-          "* Nothing",
-          ""
-        ],
-        "doc" : "Pop last item pushed onto stack into pastebuffer.\nDoes nothing if stack is empty.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:push()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "desc" : "Pop last item pushed onto stack into pastebuffer.",
-        "def" : "PasteStack:push()"
-      }
-    ],
-    "doc" : "",
-    "Field" : [
-
-    ],
-    "Method" : [
-      {
-        "name" : "init",
-        "stripped_doc" : [
-          "Initializes a PasteStack",
-          ""
-        ],
-        "parameters" : [
-          " * None",
-          ""
-        ],
-        "doc" : "Initializes a PasteStack\n\nParameters:\n * None\n\nReturns:\n * PasteStack object",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:init()",
-        "type" : "Method",
-        "returns" : [
-          " * PasteStack object"
-        ],
-        "desc" : "Initializes a PasteStack",
-        "def" : "PasteStack:init()"
-      },
-      {
-        "name" : "debug",
-        "stripped_doc" : [
-          "Enable or disable debugging",
-          ""
-        ],
-        "parameters" : [
-          " * enable - Boolean indicating whether debugging should be on",
-          ""
-        ],
-        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:debug()",
-        "type" : "Method",
-        "returns" : [
-          " * Nothing"
-        ],
-        "desc" : "Enable or disable debugging",
-        "def" : "PasteStack:debug()"
-      },
-      {
-        "name" : "push",
-        "stripped_doc" : [
-          "Pop last item pushed onto stack into pastebuffer.",
-          "Does nothing if stack is empty.",
-          ""
-        ],
-        "parameters" : [
-          "* Nothing",
-          ""
-        ],
-        "doc" : "Pop last item pushed onto stack into pastebuffer.\nDoes nothing if stack is empty.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:push()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "desc" : "Pop last item pushed onto stack into pastebuffer.",
-        "def" : "PasteStack:push()"
-      },
-      {
-        "name" : "pop",
-        "stripped_doc" : [
-          "Push a copy of the current pastebuffer onto the stack.",
-          "Leaves paste buffer intact.",
-          ""
-        ],
-        "parameters" : [
-          "* Nothing",
-          ""
-        ],
-        "doc" : "Push a copy of the current pastebuffer onto the stack.\nLeaves paste buffer intact.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
-        "notes" : [
-
-        ],
-        "signature" : "PasteStack:pop()",
-        "type" : "Method",
-        "returns" : [
-          "* Nothing"
-        ],
-        "desc" : "Push a copy of the current pastebuffer onto the stack.",
-        "def" : "PasteStack:pop()"
-      },
-      {
         "name" : "bindHotKey",
-        "stripped_doc" : [
-          "The method should accept a single parameter, which is a table.",
-          "The keys of the table should be strings that describe the",
-          "action performed by the hotkeys, and the values of the table should be tables",
-          "containing modifiers and keynames\/keycodes. E.g.",
-          "  {",
-          "    push = {{\"cmd\", \"alt\"}, \"p\"},",
-          "    pop = {{\"cmd\", \"alt\"}, \"P\"}",
-          "   }",
-          "",
-          ""
-        ],
         "parameters" : [
           " * table - Table of action to key mappings",
           ""
+        ]
+      },
+      {
+        "doc" : "Open a hs.chooser instance allowing to choice of stack elements.\n\nParameters:\n* None\n\nReturns:\n* Nothing",
+        "desc" : "Open a hs.chooser instance allowing to choice of stack elements.",
+        "stripped_doc" : [
+          "Open a hs.chooser instance allowing to choice of stack elements.",
+          ""
         ],
-        "doc" : "The method should accept a single parameter, which is a table.\nThe keys of the table should be strings that describe the\naction performed by the hotkeys, and the values of the table should be tables\ncontaining modifiers and keynames\/keycodes. E.g.\n  {\n    push = {{\"cmd\", \"alt\"}, \"p\"},\n    pop = {{\"cmd\", \"alt\"}, \"P\"}\n   }\n\n\nParameters:\n * table - Table of action to key mappings\n\nReturns:\n * PasteStack object",
+        "def" : "PasteStack:chooser()",
         "notes" : [
 
         ],
-        "signature" : "PasteStack:bindHotKey(table)",
+        "signature" : "PasteStack:chooser()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "chooser",
+        "parameters" : [
+          "* None",
+          ""
+        ]
+      },
+      {
+        "doc" : "Enable or disable debugging\n\nParameters:\n * enable - Boolean indicating whether debugging should be on\n\nReturns:\n * Nothing",
+        "desc" : "Enable or disable debugging",
+        "stripped_doc" : [
+          "Enable or disable debugging",
+          ""
+        ],
+        "def" : "PasteStack:debug()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:debug()",
+        "type" : "Method",
+        "returns" : [
+          " * Nothing"
+        ],
+        "name" : "debug",
+        "parameters" : [
+          " * enable - Boolean indicating whether debugging should be on",
+          ""
+        ]
+      },
+      {
+        "doc" : "Initializes a PasteStack\n\nParameters:\n * None\n\nReturns:\n * PasteStack object",
+        "desc" : "Initializes a PasteStack",
+        "stripped_doc" : [
+          "Initializes a PasteStack",
+          ""
+        ],
+        "def" : "PasteStack:init()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:init()",
         "type" : "Method",
         "returns" : [
           " * PasteStack object"
         ],
-        "desc" : "The method should accept a single parameter, which is a table.",
-        "def" : "PasteStack:bindHotKey(table)"
-      }
-    ],
-    "Command" : [
+        "name" : "init",
+        "parameters" : [
+          " * None",
+          ""
+        ]
+      },
+      {
+        "doc" : "Push a copy of the current pastebuffer onto the stack.\nLeaves paste buffer intact.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
+        "desc" : "Push a copy of the current pastebuffer onto the stack.",
+        "stripped_doc" : [
+          "Push a copy of the current pastebuffer onto the stack.",
+          "Leaves paste buffer intact.",
+          ""
+        ],
+        "def" : "PasteStack:pop()",
+        "notes" : [
 
+        ],
+        "signature" : "PasteStack:pop()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "pop",
+        "parameters" : [
+          "* Nothing",
+          ""
+        ]
+      },
+      {
+        "doc" : "Pop last item pushed onto stack into pastebuffer.\nDoes nothing if stack is empty.\n\nParameters:\n* Nothing\n\nReturns:\n* Nothing",
+        "desc" : "Pop last item pushed onto stack into pastebuffer.",
+        "stripped_doc" : [
+          "Pop last item pushed onto stack into pastebuffer.",
+          "Does nothing if stack is empty.",
+          ""
+        ],
+        "def" : "PasteStack:push()",
+        "notes" : [
+
+        ],
+        "signature" : "PasteStack:push()",
+        "type" : "Method",
+        "returns" : [
+          "* Nothing"
+        ],
+        "name" : "push",
+        "parameters" : [
+          "* Nothing",
+          ""
+        ]
+      }
     ],
     "name" : "PasteStack"
   }
