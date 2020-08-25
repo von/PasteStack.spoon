@@ -4,7 +4,7 @@ local PasteStack = {}
 
 -- Metadata {{{ --
 PasteStack.name="PasteStack"
-PasteStack.version="0.4"
+PasteStack.version="0.5"
 PasteStack.author="Von Welch"
 PasteStack.license="Creative Commons Zero v1.0 Universal"
 PasteStack.homepage="https://github.com/von/PasteStack.spoon"
@@ -106,15 +106,11 @@ end
 ---  * PasteStack object
 
 function PasteStack:bindHotKeys(table)
-  for feature,mapping in pairs(table) do
-    if feature == "push" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], function() self:push() end)
-    elseif feature == "pop" then
-       self.hotkey = hs.hotkey.bind(mapping[1], mapping[2], function() self:pop() end)
-     else
-       self.log.wf("Unrecognized key binding feature '%s'", feature)
-     end
-   end
+  local spec = {
+    pop = hs.fnutils.partial(self.pop, self),
+    push = hs.fnutils.partial(self.push, self)
+  }
+  hs.spoons.bindHotkeysToSpec(spec, mapping)
   return self
 end
 -- }}} PasteStack:bindHotKey() --
