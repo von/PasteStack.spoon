@@ -84,7 +84,7 @@ function PasteStack:pop()
     hs.pasteboard.setContents(table.remove(self.stack))
   end
 end
--- }}} PasteStack:push() --
+-- }}} PasteStack:pop() --
 
 -- PasteStack:bindHotKey() {{{ --
 --- PasteStack:bindHotKey(table)
