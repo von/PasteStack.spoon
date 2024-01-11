@@ -116,6 +116,7 @@ end
 --- action performed by the hotkeys, and the values of the table should be tables
 --- containing modifiers and keynames/keycodes. E.g.
 ---   {
+---     chooser = {{"cmd", "alt"}, "c"},
 ---     push = {{"cmd", "alt"}, "p"},
 ---     pushByLine = {{"cmd", "alt"}, "l"},
 ---     pop = {{"cmd", "alt"}, "P"}
@@ -130,6 +131,7 @@ end
 
 function PasteStack:bindHotKeys(table)
   local spec = {
+    chooser = hs.fnutils.partial(self.chooser, self),
     pop = hs.fnutils.partial(self.pop, self),
     push = hs.fnutils.partial(self.push, self),
     pushByLine = hs.fnutils.partial(self.pushByLine, self)
