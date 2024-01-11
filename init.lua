@@ -65,6 +65,28 @@ function PasteStack:push()
 end
 -- }}} PasteStack:push() --
 
+-- PasteStack:pushByLine() {{{ --
+--- PasteStack:pushByLine()
+--- Method
+--- Push each line of the pastebuffer onto the stack, in reverse order
+--- starting with the last line and ending for the first
+--- Does nothing if passtebuffer is empty.
+--- Leaves pastebuffer intact.
+---
+--- Parameters:
+--- * Nothing
+---
+--- Returns:
+--- * Nothing
+function PasteStack:pushByLine()
+  self.log.d("pushByLine()")
+  local lines = hs.pasteboard.getContents():gmatch("[^\r\n]+")
+  for line in lines do
+    table.insert(self.stack, line)
+  end
+end
+-- }}} PasteStack:pushByLine() --
+
 -- PasteStack:pop() {{{ --
 --- PasteStack:pop()
 --- Method
@@ -95,6 +117,7 @@ end
 --- containing modifiers and keynames/keycodes. E.g.
 ---   {
 ---     push = {{"cmd", "alt"}, "p"},
+---     pushByLine = {{"cmd", "alt"}, "l"},
 ---     pop = {{"cmd", "alt"}, "P"}
 ---    }
 ---
@@ -108,7 +131,8 @@ end
 function PasteStack:bindHotKeys(table)
   local spec = {
     pop = hs.fnutils.partial(self.pop, self),
-    push = hs.fnutils.partial(self.push, self)
+    push = hs.fnutils.partial(self.push, self),
+    pushByLine = hs.fnutils.partial(self.pushByLine, self)
   }
   hs.spoons.bindHotkeysToSpec(spec, mapping)
   return self
