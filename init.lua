@@ -51,8 +51,8 @@ end
 -- PasteStack:push() {{{ --
 --- PasteStack:push()
 --- Method
---- Pop last item pushed onto stack into pastebuffer.
---- Does nothing if stack is empty.
+--- Push a copy of the current pastebuffer onto the stack.
+--- Leaves paste buffer intact.
 ---
 --- Parameters:
 --- * Nothing
@@ -68,8 +68,8 @@ end
 -- PasteStack:pop() {{{ --
 --- PasteStack:pop()
 --- Method
---- Push a copy of the current pastebuffer onto the stack.
---- Leaves paste buffer intact.
+--- Pop last item pushed onto stack into pastebuffer.
+--- Does nothing if stack is empty.
 ---
 --- Parameters:
 --- * Nothing
