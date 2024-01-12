@@ -111,6 +111,34 @@ function PasteStack:pop()
 end
 -- }}} PasteStack:pop() --
 
+-- PasteStack:pasteAndPop() {{{ --
+--- PasteStack:pasteAndPop()
+--- Method
+--- Paste the current pastebuffer (via the Edit/Paste menu) and
+--- then pop last item pushed onto stack into pastebuffer.
+--- If paste false, pop is not performed.
+--- If stack is empty, paste is still performed, but pastebuffer
+--- is left unchanged.
+---
+--- Parameters:
+--- * Nothing
+---
+--- Returns:
+--- * Nothing
+function PasteStack:pasteAndPop()
+  local app = hs.application.frontmostApplication()
+  if app == nil then
+    hs.alert("Failed to paste: Could not get frontmost application")
+    return
+  end
+  if app:selectMenuItem({"Edit", "Paste"}) == nil then
+    hs.alert("Failed to paste: Menu item not found.")
+    return
+  end
+  self:pop()
+end
+-- }}} PasteStack:pasteAndPop() --
+
 -- PasteStack:bindHotKey() {{{ --
 --- PasteStack:bindHotKey(table)
 --- Method
