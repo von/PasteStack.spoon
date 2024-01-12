@@ -21,6 +21,8 @@ PasteStack.homepage="https://github.com/von/PasteStack.spoon"
 --- Returns:
 ---  * PasteStack object
 function PasteStack:init()
+  -- Our stack. We append to the list, so last element in the list will
+  -- be the last element pushed.
   self.stack = {}
   self.log = hs.logger.new("PasteStack")
   return self
