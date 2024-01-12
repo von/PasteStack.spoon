@@ -102,6 +102,7 @@ end
 --- * Nothing
 function PasteStack:pop()
   if #self.stack == 0 then
+    hs.alert("PasteStack empty")
     self.log.i("Empty stack")
   else
     self.log.d("Pop()")
