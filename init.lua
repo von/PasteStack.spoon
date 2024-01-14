@@ -106,7 +106,9 @@ function PasteStack:pop()
     self.log.i("Empty stack")
   else
     self.log.d("Pop()")
-    hs.pasteboard.setContents(table.remove(self.stack))
+    local text = table.remove(self.stack)
+    hs.pasteboard.setContents(text)
+    hs.alert(string.format("Pop: %.40s", text))
   end
 end
 -- }}} PasteStack:pop() --
