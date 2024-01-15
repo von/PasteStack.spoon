@@ -83,9 +83,16 @@ end
 function PasteStack:pushByLine()
   self.log.d("pushByLine()")
   local lines = hs.pasteboard.getContents():gmatch("[^\r\n]+")
+  -- Current end of stack
+  local insertPoint = #self.stack + 1
   for line in lines do
-    table.insert(self.stack, line)
+    -- Insert in order at end of current stack.
+    -- This results in first item in pastebuffer being first item on stack
+    -- and seems most intuitive.
+    table.insert(self.stack, insertPoint, line)
   end
+  hs.alert(
+    string.format("%d items pushed onto stack", #self.stack - insertPoint))
 end
 -- }}} PasteStack:pushByLine() --
 
