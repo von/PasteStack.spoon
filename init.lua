@@ -200,7 +200,8 @@ function PasteStack:chooser()
   end
 
   local choices = {}
-  for index=1,#self.stack do
+  -- Show last pushed first
+  for index=#self.stack,1,-1 do
     table.insert(choices, {
         text = string.format("%.40s", self.stack[index]),
         index = index
