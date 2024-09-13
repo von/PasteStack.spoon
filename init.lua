@@ -92,7 +92,7 @@ function PasteStack:pushByLine()
     table.insert(self.stack, insertPoint, line)
   end
   hs.alert(
-    string.format("%d items pushed onto stack", #self.stack - insertPoint))
+    string.format("%d items pushed onto stack", #self.stack - insertPoint + 1))
 end
 -- }}} PasteStack:pushByLine() --
 
