@@ -148,6 +148,31 @@ function PasteStack:pasteAndPop()
 end
 -- }}} PasteStack:pasteAndPop() --
 
+-- PasteStack:swap() {{{ --
+--- PasteStack:swap()
+--- Method
+--- Swap last item pushed onto stack and pastebuffer.
+--- Does nothing if stack is empty.
+---
+--- Parameters:
+--- * Nothing
+---
+--- Returns:
+--- * Nothing
+function PasteStack:swap()
+  if #self.stack == 0 then
+    hs.alert("PasteStack empty")
+    self.log.i("Empty stack")
+  else
+    self.log.d("Swap()")
+    local text = table.remove(self.stack)
+    table.insert(self.stack, hs.pasteboard.getContents())
+    hs.pasteboard.setContents(text)
+    hs.alert(string.format("Swap: %.40s", text))
+  end
+end
+-- }}} PasteStack:pop() --
+
 -- PasteStack:bindHotKey() {{{ --
 --- PasteStack:bindHotKey(table)
 --- Method
