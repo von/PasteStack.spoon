@@ -54,7 +54,7 @@ end
 --- PasteStack:push()
 --- Method
 --- Push a copy of the current pastebuffer onto the stack.
---- Leaves paste buffer intact.
+--- Leaves the pastebuffer intact.
 ---
 --- Parameters:
 --- * Nothing
@@ -71,9 +71,9 @@ end
 --- PasteStack:pushByLine()
 --- Method
 --- Push each line of the pastebuffer onto the stack, in reverse order
---- starting with the last line and ending for the first
---- Does nothing if passtebuffer is empty.
---- Leaves pastebuffer intact.
+--- starting with the last line and ending for the first.
+--- Does nothing if the pastebuffer is empty.
+--- Leaves the pastebuffer intact.
 ---
 --- Parameters:
 --- * Nothing
@@ -99,7 +99,7 @@ end
 -- PasteStack:pop() {{{ --
 --- PasteStack:pop()
 --- Method
---- Pop last item pushed onto stack into pastebuffer.
+--- Pop last item pushed onto stack into the pastebuffer.
 --- Does nothing if stack is empty.
 ---
 --- Parameters:
@@ -124,10 +124,10 @@ end
 --- PasteStack:pasteAndPop()
 --- Method
 --- Paste the current pastebuffer (via the Edit/Paste menu) and
---- then pop last item pushed onto stack into pastebuffer.
---- If paste false, pop is not performed.
---- If stack is empty, paste is still performed, but pastebuffer
---- is left unchanged.
+--- then pop the last item pushed onto stack into pastebuffer.
+--- If the paste fails, the pop is not performed.
+--- If the stack is empty, the paste is still performed, but the
+--- pastebuffer is left unchanged.
 ---
 --- Parameters:
 --- * Nothing
@@ -151,8 +151,8 @@ end
 -- PasteStack:swap() {{{ --
 --- PasteStack:swap()
 --- Method
---- Swap last item pushed onto stack and pastebuffer.
---- Does nothing if stack is empty.
+--- Swap last item pushed onto stack and the pastebuffer.
+--- Does nothing if the stack is empty.
 ---
 --- Parameters:
 --- * Nothing
@@ -210,6 +210,7 @@ end
 --- PasteStack:chooser()
 --- Method
 --- Open a hs.chooser instance allowing to choice of stack elements.
+--- Choosen element is placed into the pastebuffer.
 ---
 --- Parameters:
 --- * None
